@@ -6,7 +6,7 @@
 package com.tienda.entidades;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,13 +26,13 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author antho
  */
 @Entity
-@Table(name = "EstadoCivil")
+@Table(name = "estadocivil")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "EstadoCivil.findAll", query = "SELECT e FROM EstadoCivil e")
-    , @NamedQuery(name = "EstadoCivil.findByCodigoEstadoCivil", query = "SELECT e FROM EstadoCivil e WHERE e.codigoEstadoCivil = :codigoEstadoCivil")
-    , @NamedQuery(name = "EstadoCivil.findByNombre", query = "SELECT e FROM EstadoCivil e WHERE e.nombre = :nombre")})
-public class EstadoCivil implements Serializable {
+    @NamedQuery(name = "Estadocivil.findAll", query = "SELECT e FROM Estadocivil e")
+    , @NamedQuery(name = "Estadocivil.findByCodigoEstadoCivil", query = "SELECT e FROM Estadocivil e WHERE e.codigoEstadoCivil = :codigoEstadoCivil")
+    , @NamedQuery(name = "Estadocivil.findByNombre", query = "SELECT e FROM Estadocivil e WHERE e.nombre = :nombre")})
+public class Estadocivil implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,12 +44,12 @@ public class EstadoCivil implements Serializable {
     @Column(name = "nombre")
     private String nombre;
     @OneToMany(mappedBy = "codigoEstadoCivil")
-    private List<Empelado> empeladoList;
+    private Collection<Empelado> empeladoCollection;
 
-    public EstadoCivil() {
+    public Estadocivil() {
     }
 
-    public EstadoCivil(Integer codigoEstadoCivil) {
+    public Estadocivil(Integer codigoEstadoCivil) {
         this.codigoEstadoCivil = codigoEstadoCivil;
     }
 
@@ -70,12 +70,12 @@ public class EstadoCivil implements Serializable {
     }
 
     @XmlTransient
-    public List<Empelado> getEmpeladoList() {
-        return empeladoList;
+    public Collection<Empelado> getEmpeladoCollection() {
+        return empeladoCollection;
     }
 
-    public void setEmpeladoList(List<Empelado> empeladoList) {
-        this.empeladoList = empeladoList;
+    public void setEmpeladoCollection(Collection<Empelado> empeladoCollection) {
+        this.empeladoCollection = empeladoCollection;
     }
 
     @Override
@@ -88,10 +88,10 @@ public class EstadoCivil implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof EstadoCivil)) {
+        if (!(object instanceof Estadocivil)) {
             return false;
         }
-        EstadoCivil other = (EstadoCivil) object;
+        Estadocivil other = (Estadocivil) object;
         if ((this.codigoEstadoCivil == null && other.codigoEstadoCivil != null) || (this.codigoEstadoCivil != null && !this.codigoEstadoCivil.equals(other.codigoEstadoCivil))) {
             return false;
         }
@@ -100,7 +100,7 @@ public class EstadoCivil implements Serializable {
 
     @Override
     public String toString() {
-        return "com.tienda.entidades.EstadoCivil[ codigoEstadoCivil=" + codigoEstadoCivil + " ]";
+        return "com.tienda.entidades.Estadocivil[ codigoEstadoCivil=" + codigoEstadoCivil + " ]";
     }
     
 }
