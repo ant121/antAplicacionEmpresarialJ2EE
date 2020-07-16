@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author antho
  */
 @Entity
-@Table(name = "Empelado")
+@Table(name = "empelado")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Empelado.findAll", query = "SELECT e FROM Empelado e")
@@ -62,7 +62,7 @@ public class Empelado implements Serializable {
     private Cargo codigoCargo;
     @JoinColumn(name = "codigo_estado_civil", referencedColumnName = "codigo_estado_civil")
     @ManyToOne
-    private EstadoCivil codigoEstadoCivil;
+    private Estadocivil codigoEstadoCivil;
 
     public Empelado() {
     }
@@ -119,11 +119,11 @@ public class Empelado implements Serializable {
         this.codigoCargo = codigoCargo;
     }
 
-    public EstadoCivil getCodigoEstadoCivil() {
+    public Estadocivil getCodigoEstadoCivil() {
         return codigoEstadoCivil;
     }
 
-    public void setCodigoEstadoCivil(EstadoCivil codigoEstadoCivil) {
+    public void setCodigoEstadoCivil(Estadocivil codigoEstadoCivil) {
         this.codigoEstadoCivil = codigoEstadoCivil;
     }
 

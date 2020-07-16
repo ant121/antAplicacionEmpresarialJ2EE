@@ -6,7 +6,7 @@
 package com.tienda.entidades;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author antho
  */
 @Entity
-@Table(name = "Cargo")
+@Table(name = "cargo")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Cargo.findAll", query = "SELECT c FROM Cargo c")
@@ -44,7 +44,7 @@ public class Cargo implements Serializable {
     @Column(name = "nombre")
     private String nombre;
     @OneToMany(mappedBy = "codigoCargo")
-    private List<Empelado> empeladoList;
+    private Collection<Empelado> empeladoCollection;
 
     public Cargo() {
     }
@@ -70,12 +70,12 @@ public class Cargo implements Serializable {
     }
 
     @XmlTransient
-    public List<Empelado> getEmpeladoList() {
-        return empeladoList;
+    public Collection<Empelado> getEmpeladoCollection() {
+        return empeladoCollection;
     }
 
-    public void setEmpeladoList(List<Empelado> empeladoList) {
-        this.empeladoList = empeladoList;
+    public void setEmpeladoCollection(Collection<Empelado> empeladoCollection) {
+        this.empeladoCollection = empeladoCollection;
     }
 
     @Override
